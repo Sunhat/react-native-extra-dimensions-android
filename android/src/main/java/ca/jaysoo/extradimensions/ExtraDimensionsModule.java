@@ -32,6 +32,7 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule {
 
         constants.put("STATUS_BAR_HEIGHT", getStatusBarHeight());
         constants.put("SOFT_MENU_BAR_HEIGHT", getSoftMenuBarHeight());
+        constants.put("REAL_WINDOW_HEIGHT", getRealHeight());
 
         return constants;
     }
@@ -54,10 +55,14 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule {
         mCurrentActivity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int usableHeight = metrics.heightPixels;
 
-        mCurrentActivity.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
-        int realHeight = metrics.heightPixels;
+        return Math.max(0, getRealHeight() - usableHeight / metrics.density);
+    }
 
-        return Math.max(0, realHeight - usableHeight) / metrics.density;
+    private float getRealHeight() {
+        Context ctx = getReactApplicationContext();
+        DisplayMetrics metrics = ctx.getResources().getDisplayMetrics();
+        mCurrentActivity.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+        return metrics.heightPixels / metrics.density;
     }
 }
 
