@@ -3,6 +3,20 @@
   "version": "0.17.0",
   "description": "",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaysoo/react-native-extra-dimensions-android"
+  },
+  "files": [
+    "index",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "react-native",
+    "react",
+    "android"
+  ],
   "author": "Jack Hsu <jack.hsu@gmail.com> (http://jaysoo.ca/)",
   "license": "ISC"
 }
