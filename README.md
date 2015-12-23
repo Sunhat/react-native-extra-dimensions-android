@@ -6,6 +6,14 @@ This module allows you to access additional display metrics on Android devices.
 - Soft menu height
 - Status bar height
 
+### Why?
+
+There is currently a bug in React Native where [`Dimensions.get('window').height` sometimes returns
+the wrong value](https://github.com/facebook/react-native/issues/4934).
+
+Also, some apps may want to set the background of status bar and soft menu bar to transparent, thus the top-level
+view needs to fill up the real screen size.
+
 ### Installation
 
 1. In `android/setting.gradle`
