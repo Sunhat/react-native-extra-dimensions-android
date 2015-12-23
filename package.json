@@ -8,6 +8,7 @@
     "url": "https://github.com/jaysoo/react-native-extra-dimensions-android"
   },
   "files": [
+    "android",
     "index",
     "README.md",
     "LICENSE"
