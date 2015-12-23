@@ -1,7 +1,7 @@
 {
   "name": "react-native-extra-dimensions-android",
   "version": "0.17.0",
-  "description": "",
+  "description": "Access additional display metrics on Android devices: status bar height, soft menu bar height, real screen size.",
   "main": "index.js",
   "repository": {
     "type": "git",
