@@ -5,6 +5,7 @@ This module allows you to access additional display metrics on Android devices.
 - Actual width and height of the screen (including elements such as soft menu bar)
 - Soft menu height
 - Status bar height
+- Smart bar height(MeiZu)
 
 ### Why?
 
@@ -84,3 +85,4 @@ Supported dimensions are:
 - `REAL_WINDOW_WIDTH` - Actual width of screen including system decor elements
 - `STATUS_BAR_HEIGHT` - Height of the status bar
 - `SOFT_MENU_BAR_HEIGHT` - Height of the soft menu bar (supported on most new Android devices)
+- `SMART_BAR_HEIGHT` - Height of the MeiZu's device smart bar
