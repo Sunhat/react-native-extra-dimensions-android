@@ -8,12 +8,16 @@ import android.content.Context;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.provider.Settings;
+import android.content.res.Resources;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import java.lang.reflect.Field;
 
 public class ExtraDimensionsModule extends ReactContextBaseJavaModule {
     private Activity mCurrentActivity;
@@ -53,6 +57,7 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule {
         constants.put("REAL_WINDOW_WIDTH", getRealWidth(metrics));
         constants.put("STATUS_BAR_HEIGHT", getStatusBarHeight(metrics));
         constants.put("SOFT_MENU_BAR_HEIGHT", getSoftMenuBarHeight(metrics));
+        constants.put("SMART_BAR_HEIGHT", getSmartBarHeight(metrics));
 
         return constants;
     }
@@ -83,6 +88,53 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule {
 
     private float getRealWidth(DisplayMetrics metrics) {
         return metrics.widthPixels / metrics.density;
+    }
+
+    // 获取魅族SmartBar高度
+    private float getSmartBarHeight(DisplayMetrics metrics) {
+        final Context context = getReactApplicationContext();
+        final boolean isMeiZu = Build.MANUFACTURER.equals("Meizu");
+ 
+        final boolean autoHideSmartBar = Settings.System.getInt(context.getContentResolver(),
+            "mz_smartbar_auto_hide", 0) == 1;
+ 
+        if (isMeiZu) {
+            if (autoHideSmartBar) {
+                return 0;
+            } else {
+                try {
+                    Class c = Class.forName("com.android.internal.R$dimen");
+                    Object obj = c.newInstance();
+                    Field field = c.getField("mz_action_button_min_height");
+                    int height = Integer.parseInt(field.get(obj).toString());
+                    return context.getResources().getDimensionPixelSize(height) / metrics.density;
+                } catch (Throwable e) { // 不自动隐藏smartbar同时又没有smartbar高度字段供访问，取系统navigationbar的高度
+                    return getNormalNavigationBarHeight(context) / metrics.density;
+                }
+            }
+        } else {
+            return 0;
+            //return getNormalNavigationBarHeight(context) / metrics.density;
+        }
+    }
+ 
+    protected static float getNormalNavigationBarHeight(final Context ctx) {
+        try {
+            final Resources res = ctx.getResources();
+            int rid = res.getIdentifier("config_showNavigationBar", "bool", "android");
+            if (rid > 0) {
+                boolean flag = res.getBoolean(rid);
+                if (flag) {
+                    int resourceId = res.getIdentifier("navigation_bar_height", "dimen", "android");
+                    if (resourceId > 0) {
+                        return res.getDimensionPixelSize(resourceId);
+                    }
+                }
+            }
+        } catch (Throwable e) {
+            return 0;
+        }
+        return 0;
     }
 }
 
