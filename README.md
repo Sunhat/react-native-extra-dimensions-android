@@ -40,31 +40,15 @@ view needs to fill up the real screen size.
     ```
     import ca.jaysoo.extradimensions.ExtraDimensionsPackage;  // <--- import
 
-    public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
+    public class MainActivity extends ReactActivity {
       ......
-
-      @Override
-      protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mReactRootView = new ReactRootView(this);
-
-        mReactInstanceManager = ReactInstanceManager.builder()
-          .setApplication(getApplication())
-          .setBundleAssetName("index.android.bundle")
-          .setJSMainModuleName("index.android")
-          .addPackage(new MainReactPackage())
-          .addPackage(new ExtraDimensionsPackage(this))              // <------ add here
-          .setUseDeveloperSupport(BuildConfig.DEBUG)
-          .setInitialLifecycleState(LifecycleState.RESUMED)
-          .build();
-
-        mReactRootView.startReactApplication(mReactInstanceManager, "ExampleRN", null);
-
-        setContentView(mReactRootView);
+      protected List<ReactPackage> getPackages() {
+        return Arrays.<ReactPackage>asList(
+          new MainReactPackage(),
+          new ExtraDimensionsPackage(this)  // <--- add here
+        );
       }
-
       ......
-
     }
     ```
 
