@@ -19,5 +19,9 @@
     "android"
   ],
   "author": "Jack Hsu <jack.hsu@gmail.com> (http://jaysoo.ca/)",
-  "license": "ISC"
+  "license": "ISC",
+  "rnpm": {
+    "android": {
+      "packageInstance": "new ExtraDimensionsPackage(this)"
+    }
 }
