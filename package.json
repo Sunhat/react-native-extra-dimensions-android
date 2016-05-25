@@ -24,4 +24,5 @@
     "android": {
       "packageInstance": "new ExtraDimensionsPackage(this)"
     }
+  }
 }
