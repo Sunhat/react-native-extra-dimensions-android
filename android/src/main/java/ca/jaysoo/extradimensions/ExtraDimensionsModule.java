@@ -3,15 +3,17 @@ package ca.jaysoo.extradimensions;
 import java.lang.Math;
 import java.lang.reflect.InvocationTargetException;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.provider.Settings;
 import android.content.res.Resources;
+import android.view.WindowManager;
 
 import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.LifecycleEventListener;
+import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 
 import java.util.HashMap;
@@ -19,17 +21,34 @@ import java.util.Map;
 
 import java.lang.reflect.Field;
 
-public class ExtraDimensionsModule extends ReactContextBaseJavaModule {
-    private Activity mCurrentActivity;
+public class ExtraDimensionsModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
 
-    public ExtraDimensionsModule(ReactApplicationContext reactContext, Activity activity) {
+    private ReactContext mReactContext;
+
+    public ExtraDimensionsModule(ReactApplicationContext reactContext) {
         super(reactContext);
-        mCurrentActivity = activity;
+        mReactContext = reactContext;
+        mReactContext.addLifecycleEventListener(this);
     }
 
     @Override
     public String getName() {
         return "ExtraDimensions";
+    }
+
+    @Override
+    public void onHostDestroy() {
+
+    }
+
+    @Override
+    public void onHostPause() {
+
+    }
+
+    @Override
+    public void onHostResume() {
+
     }
 
     @Override
@@ -44,7 +63,8 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule {
         //
         // See: http://developer.android.com/reference/android/view/Display.html#getRealMetrics(android.util.DisplayMetrics)
         if (Build.VERSION.SDK_INT >= 17) {
-            Display display = mCurrentActivity.getWindowManager().getDefaultDisplay();
+            Display display = ((WindowManager) mReactContext.getSystemService(Context.WINDOW_SERVICE))
+                    .getDefaultDisplay();
             try {
                 Display.class.getMethod("getRealMetrics", DisplayMetrics.class).invoke(display, metrics);
             } catch (InvocationTargetException e) {
@@ -76,7 +96,8 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule {
         final Context ctx = getReactApplicationContext();
         final DisplayMetrics usableMetrics = ctx.getResources().getDisplayMetrics();
 
-        mCurrentActivity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        ((WindowManager) mReactContext.getSystemService(Context.WINDOW_SERVICE))
+                .getDefaultDisplay().getMetrics(metrics);
         final int usableHeight = usableMetrics.heightPixels;
 
         return Math.max(0, realHeight - usableHeight / metrics.density);
@@ -137,4 +158,3 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule {
         return 0;
     }
 }
-
