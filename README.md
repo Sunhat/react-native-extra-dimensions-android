@@ -1,6 +1,6 @@
 ## ExtraDimensions
 
-This module allows you to access additional display metrics on Android devices.
+This module allows you to access additional display metrics on Android devices. (RN 0.29.0+)
 
 - Actual width and height of the screen (including elements such as soft menu bar)
 - Soft menu height
@@ -35,17 +35,17 @@ view needs to fill up the real screen size.
     }
     ```
 
-3. Register module (in MainActivity.java)
+3. Register module (in MainApplication.java)
 
     ```
     import ca.jaysoo.extradimensions.ExtraDimensionsPackage;  // <--- import
 
-    public class MainActivity extends ReactActivity {
+    public class MainApplication extends Application implements ReactApplication {
       ......
       protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-          new ExtraDimensionsPackage(this)  // <--- add here
+          new ExtraDimensionsPackage()  // <--- add here
         );
       }
       ......
