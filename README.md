@@ -9,7 +9,15 @@ This module allows you to access additional display metrics on Android devices. 
 - Actual width and height of the screen (including elements such as soft menu bar)
 - Soft menu height
 - Status bar height
-- Smart bar height(MeiZu)
+- Smart bar height (MeiZu)
+
+
+### FORKED
+
+I've forked this from the original repo. Despite finding other repo's that claimed to have fixed this, I ran into issues with React Native 0.29+. The module didn't appear to be registering the same way as the React Native docs instructed. 
+
+I hope to keep this repo up to date with the latest version of 
+
 
 ### Why?
 
@@ -21,25 +29,14 @@ view needs to fill up the real screen size.
 
 ### Installation
 
-1. In `android/setting.gradle`
+1. link using rnpm
 
     ```
     ...
-    include ':ExtraDimensions', ':app'
-    project(':ExtraDimensions').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-extra-dimensions-android/android')
+    rnpm link react-native-extra-dimensions-android
     ```
 
-2. In `android/app/build.gradle`
-
-    ```
-    ...
-    dependencies {
-        ...
-        compile project(':ExtraDimensions')
-    }
-    ```
-
-3. Register module (in MainApplication.java)
+2. You may have to register the module (in android/app/src/main/java/com/YOUR-PROJECT-NAME/MainApplication.java)
 
     ```
     import ca.jaysoo.extradimensions.ExtraDimensionsPackage;  // <--- import
