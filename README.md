@@ -1,3 +1,7 @@
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+I have no time to maintain this project, but if anyone is interested in taking over, please DM or email me. I can transfer the npm module over.
+
 ## ExtraDimensions
 
 This module allows you to access additional display metrics on Android devices.
