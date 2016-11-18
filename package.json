@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaysoo/react-native-extra-dimensions-android"
+    "url": "https://github.com/Sunhat/react-native-extra-dimensions-android"
   },
   "files": [
     "android",
