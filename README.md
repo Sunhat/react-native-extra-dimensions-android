@@ -32,7 +32,6 @@ view needs to fill up the real screen size.
 1. link using rnpm
 
     ```
-    ...
     rnpm link react-native-extra-dimensions-android
     ```
 
