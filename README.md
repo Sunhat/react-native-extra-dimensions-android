@@ -21,6 +21,12 @@ view needs to fill up the real screen size.
 
 ### Installation
 
+run `$ npm i react-native-extra-dimensions-android`
+and `$ rnpm link`
+
+OR
+
+
 1. In `android/setting.gradle`
 
     ```
