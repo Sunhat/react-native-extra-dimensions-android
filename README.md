@@ -19,9 +19,15 @@ the wrong value](https://github.com/facebook/react-native/issues/4934).
 Also, some apps may want to set the background of status bar and soft menu bar to transparent, thus the top-level
 view needs to fill up the real screen size.
 
-### Installation
+### Installation with rnpm
+1. `npm install --save react-native-extra-dimensions-android`
 
-1. In `android/setting.gradle`
+2. `rnpm link react-native-extra-dimensions-android`
+
+### Manual installation
+1. `npm install --save react-native-extra-dimensions-android`
+
+2. In `android/setting.gradle`
 
     ```
     ...
@@ -29,7 +35,7 @@ view needs to fill up the real screen size.
     project(':ExtraDimensions').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-extra-dimensions-android/android')
     ```
 
-2. In `android/app/build.gradle`
+3. In `android/app/build.gradle`
 
     ```
     ...
@@ -39,7 +45,7 @@ view needs to fill up the real screen size.
     }
     ```
 
-3. Register module (in MainActivity.java)
+4. Register module (in MainActivity.java)
 
     ```
     import ca.jaysoo.extradimensions.ExtraDimensionsPackage;  // <--- import
