@@ -25,7 +25,8 @@ view needs to fill up the real screen size.
 1. Install with npm
    ```
    npm install react-native-extra-dimensions-android --save
-
+   ```
+   
 2. link using rnpm
 
     ```
@@ -48,9 +49,13 @@ view needs to fill up the real screen size.
       ......
     }
     ```
+    
 4. Whenever you want to use it within React Native code now you can:
+
 `var ExtraDimensions = require('react-native-extra-dimensions-android');`
+
 Or, if you are using ES6
+
 `import ExtraDimensions from 'react-native-extra-dimensions-android';`
 
 ### Demo
