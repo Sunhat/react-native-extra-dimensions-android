@@ -35,6 +35,7 @@ view needs to fill up the real screen size.
 
 3. You may have to register the module (in android/app/src/main/java/com/YOUR-PROJECT-NAME/MainApplication.java)
 
+
     ```
     import ca.jaysoo.extradimensions.ExtraDimensionsPackage;  // <--- import
 

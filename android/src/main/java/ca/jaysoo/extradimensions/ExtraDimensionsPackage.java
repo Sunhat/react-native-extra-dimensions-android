@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class ExtraDimensionsPackage implements ReactPackage {
 
+
     @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
         return Collections.emptyList();
@@ -33,5 +34,4 @@ public class ExtraDimensionsPackage implements ReactPackage {
 
         return modules;
     }
-
 }
