@@ -12,13 +12,6 @@ This module allows you to access additional display metrics on Android devices. 
 - Smart bar height (MeiZu)
 
 
-### FORKED
-
-I've forked this from the original repo. Despite finding other repo's that claimed to have fixed this, I ran into issues with React Native 0.29+. The module didn't appear to be registering the same way as the React Native docs instructed. 
-
-I hope to keep this repo up to date with the latest version of 
-
-
 ### Why?
 
 There is currently a bug in React Native where [`Dimensions.get('window').height` sometimes returns
@@ -29,13 +22,17 @@ view needs to fill up the real screen size.
 
 ### Installation
 
-1. link using rnpm
+1. Install with npm
+   ```
+   npm install react-native-extra-dimensions-android --save
+
+2. link using rnpm
 
     ```
     rnpm link react-native-extra-dimensions-android
     ```
 
-2. You may have to register the module (in android/app/src/main/java/com/YOUR-PROJECT-NAME/MainApplication.java)
+3. You may have to register the module (in android/app/src/main/java/com/YOUR-PROJECT-NAME/MainApplication.java)
 
     ```
     import ca.jaysoo.extradimensions.ExtraDimensionsPackage;  // <--- import
@@ -51,9 +48,10 @@ view needs to fill up the real screen size.
       ......
     }
     ```
-
-Whenever you want to use it within React Native code now you can:
+4. Whenever you want to use it within React Native code now you can:
 `var ExtraDimensions = require('react-native-extra-dimensions-android');`
+Or, if you are using ES6
+`import ExtraDimensions from 'react-native-extra-dimensions-android';`
 
 ### Demo
 
