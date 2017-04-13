@@ -1,5 +1,5 @@
 const React = require('react');
-import { NativeModules, Platform } from 'react-native';
+var { NativeModules, Platform } = require('react-native');
 
 if (Platform.OS === 'android') {
   module.exports = {
