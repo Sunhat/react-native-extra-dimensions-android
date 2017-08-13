@@ -1,6 +1,6 @@
 ## ExtraDimensions
 
-This module allows you to access additional display metrics on Android devices. (RN 0.29.0+)
+This module allows you to access additional display metrics on Android devices. (RN 0.47.0+)
 
 - Actual width and height of the screen (including elements such as soft menu bar)
 - Soft menu height
