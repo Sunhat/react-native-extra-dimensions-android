@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class ExtraDimensionsPackage implements ReactPackage {
 
-    @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return Arrays.asList();
     }
