@@ -17,7 +17,6 @@ public class ExtraDimensionsPackage implements ReactPackage {
         return Arrays.asList();
     }
 
-    @Override 
     public List<Class<? extends JavaScriptModule>> createJSModules() { 
         return Collections.emptyList(); 
     }
