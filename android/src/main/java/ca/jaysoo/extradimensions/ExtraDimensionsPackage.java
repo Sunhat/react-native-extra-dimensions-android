@@ -16,6 +16,10 @@ public class ExtraDimensionsPackage implements ReactPackage {
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return Arrays.asList();
     }
+  
+    public List<Class<? extends JavaScriptModule>> createJSModules() { 
+        return Collections.emptyList(); 
+    }
 
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
