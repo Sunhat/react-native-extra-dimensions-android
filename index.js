@@ -8,9 +8,9 @@ if (Platform.OS === 'android') {
     }
   };
 } else {
-  console.warn('react-native-extra-dimensions-android is only available on Android');
   module.exports = {
     get(dim) {
+      console.warn('react-native-extra-dimensions-android is only available on Android');
       return 0;
     }
   };
