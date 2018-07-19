@@ -4,11 +4,6 @@ def safeExtGet(prop, fallback) {
 
 apply plugin: 'com.android.library'
 
-def DEFAULT_COMPILE_SDK_VERSION   = 26
-def DEFAULT_BUILD_TOOLS_VERSION   = "26.0.3"
-def DEFAULT_TARGET_SDK_VERSION    = 26
-def DEFAULT_MIN_SDK_VERSION       = 16
-
 android {
         compileSdkVersion safeExtGet('compileSdkVersion', 26)
         buildToolsVersion safeExtGet('buildToolsVersion', '26.0.3')
