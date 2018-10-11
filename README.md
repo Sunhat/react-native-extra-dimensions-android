@@ -1,11 +1,3 @@
-# Package Deprecated
-
-React should now give you the dimensions you need correctly.
-https://github.com/facebook/react-native/commit/228a1fe7d48d57a0fbb2d852135ef94247198aaa
-
-
-
-
 
 ## ExtraDimensions
 
@@ -32,10 +24,10 @@ view needs to fill up the real screen size.
    npm install react-native-extra-dimensions-android --save
    ```
    
-2. link using rnpm
+2. linking
 
     ```
-    rnpm link react-native-extra-dimensions-android
+    react-native link react-native-extra-dimensions-android
     ```
 
 3. You may have to register the module (in android/app/src/main/java/com/YOUR-PROJECT-NAME/MainApplication.java)
