@@ -1,11 +1,3 @@
-# Package Deprecated
-
-React should now give you the dimensions you need correctly.
-https://github.com/facebook/react-native/commit/228a1fe7d48d57a0fbb2d852135ef94247198aaa
-
-
-
-
 
 ## ExtraDimensions
 
