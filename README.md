@@ -32,10 +32,10 @@ view needs to fill up the real screen size.
    npm install react-native-extra-dimensions-android --save
    ```
    
-2. link using rnpm
+2. linking
 
     ```
-    rnpm link react-native-extra-dimensions-android
+    react-native link react-native-extra-dimensions-android
     ```
 
 3. You may have to register the module (in android/app/src/main/java/com/YOUR-PROJECT-NAME/MainApplication.java)
