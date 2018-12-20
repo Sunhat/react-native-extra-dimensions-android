@@ -1,4 +1,7 @@
 
+### Notice
+Pull requests always welcome!
+
 ## ExtraDimensions
 
 This module allows you to access additional display metrics on Android devices. (RN 0.47.0+)
