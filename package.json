@@ -1,6 +1,6 @@
 {
   "name": "react-native-extra-dimensions-android",
-  "version": "0.22.0",
+  "version": "1.0.0",
   "description": "Access additional display metrics on Android devices: status bar height, soft menu bar height, real screen size.",
   "main": "index.js",
   "repository": {
@@ -19,9 +19,9 @@
     "android"
   ],
   "rnpm": {
-   "android": {
-     "packageInstance": "new ExtraDimensionsPackage()"
-   }
+    "android": {
+      "packageInstance": "new ExtraDimensionsPackage()"
+    }
   },
   "author": "Jack Hsu <jack.hsu@gmail.com> (http://jaysoo.ca/)",
   "license": "ISC"
