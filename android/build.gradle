@@ -5,12 +5,12 @@ def safeExtGet(prop, fallback) {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 26
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         ndk {
