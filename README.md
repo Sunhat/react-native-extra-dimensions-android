@@ -33,8 +33,8 @@ view needs to fill up the real screen size.
     react-native link react-native-extra-dimensions-android
     ```
 
-3. You may have to register the module (in android/app/src/main/java/com/YOUR-PROJECT-NAME/MainApplication.java)
-
+2b. You may have to register the module (in android/app/src/main/java/com/YOUR-PROJECT-NAME/MainApplication.java)
+`react-native link` should automatically do the following for you. If it doesn't, you might have to add it yourself.
 
     ```
     import ca.jaysoo.extradimensions.ExtraDimensionsPackage;  // <--- import
@@ -50,7 +50,10 @@ view needs to fill up the real screen size.
       ......
     }
     ```
-    
+3. As this is a package with Java, you'll need to rebuild the project.
+
+e.g. `react-native run-android`
+
 4. Whenever you want to use it within React Native code now you can:
 
 `var ExtraDimensions = require('react-native-extra-dimensions-android');`
