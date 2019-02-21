@@ -79,6 +79,7 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule implements
         constants.put("STATUS_BAR_HEIGHT", getStatusBarHeight(metrics));
         constants.put("SOFT_MENU_BAR_HEIGHT", getSoftMenuBarHeight(metrics));
         constants.put("SMART_BAR_HEIGHT", getSmartBarHeight(metrics));
+        constants.put("SOFT_MENU_BAR_ENABLED", hasPermanentMenuKey());
 
         return constants;
     }
@@ -105,6 +106,7 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule implements
         final Context ctx = getReactApplicationContext();
         final DisplayMetrics usableMetrics = ctx.getResources().getDisplayMetrics();
 
+        // Passing getMetrics will update the value of the Object DisplayMetrics metrics
         ((WindowManager) mReactContext.getSystemService(Context.WINDOW_SERVICE))
                 .getDefaultDisplay().getMetrics(metrics);
         final int usableHeight = usableMetrics.heightPixels;
