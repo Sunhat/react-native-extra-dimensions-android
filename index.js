@@ -4,8 +4,14 @@ var { NativeModules, Platform } = require('react-native');
 if (Platform.OS === 'android') {
   module.exports = {
     get(dim) {
-      const result = NativeModules.ExtraDimensions[dim];
-
+      try {
+        if(!NativeModules.hasOwnProperty('ExtraDimensions')) {
+          throw "ExtraDimensions not defined. Try rebuilding your project. e.g. react-native run-android"
+        }
+        const result = NativeModules.ExtraDimensions[dim];
+      } catch (e) {
+        console.error(e)
+      }
       if(typeof result !== 'number') {
           return result;
       }
