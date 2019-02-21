@@ -10,6 +10,7 @@ import android.view.Display;
 import android.provider.Settings;
 import android.content.res.Resources;
 import android.view.WindowManager;
+import android.view.ViewConfiguration;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.LifecycleEventListener;
@@ -82,6 +83,11 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule implements
         return constants;
     }
 
+    private boolean hasPermanentMenuKey() {
+        final Context ctx = getReactApplicationContext();
+        return ViewConfiguration.get(ctx).hasPermanentMenuKey();
+    }
+
     private float getStatusBarHeight(DisplayMetrics metrics) {
         final Context ctx = getReactApplicationContext();
         final int heightResId = ctx.getResources().getIdentifier("status_bar_height", "dimen", "android");
@@ -92,6 +98,9 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule implements
     }
 
     private float getSoftMenuBarHeight(DisplayMetrics metrics) {
+        if(hasPermanentMenuKey()) {
+            return 0;
+        }
         final float realHeight = getRealHeight(metrics);
         final Context ctx = getReactApplicationContext();
         final DisplayMetrics usableMetrics = ctx.getResources().getDisplayMetrics();
