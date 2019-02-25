@@ -18,11 +18,11 @@ if (Platform.OS === 'android') {
         console.error(e);
       }
     },
-    getRealWidthHeight() {
+    getRealWindowHeight() {
       return this.get('REAL_WINDOW_HEIGHT');
     },
     getRealWindowWidth() {
-      return this.get('REAL_WIDTH_WIDTH');
+      return this.get('REAL_WINDOW_WIDTH');
     },
     getStatusBarHeight() {
       return this.get('STATUS_BAR_HEIGHT');

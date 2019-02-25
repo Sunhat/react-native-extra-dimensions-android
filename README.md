@@ -80,7 +80,7 @@ Supported dimensions are:
 
 Alternatively, there are methods for each constant, to fulfill autocomplete in your IDE
 
-`ExtraDimensions.getRealWidthHeight()`
+`ExtraDimensions.getRealWindowHeight()`
 
 `ExtraDimensions.getRealWindowWidth()`
 
