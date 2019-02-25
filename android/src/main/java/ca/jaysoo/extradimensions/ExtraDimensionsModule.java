@@ -130,24 +130,19 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule implements
         final boolean autoHideSmartBar = Settings.System.getInt(context.getContentResolver(),
             "mz_smartbar_auto_hide", 0) == 1;
  
-        if (isMeiZu) {
-            if (autoHideSmartBar) {
-                return 0;
-            } else {
-                try {
-                    Class c = Class.forName("com.android.internal.R$dimen");
-                    Object obj = c.newInstance();
-                    Field field = c.getField("mz_action_button_min_height");
-                    int height = Integer.parseInt(field.get(obj).toString());
-                    return context.getResources().getDimensionPixelSize(height) / metrics.density;
-                } catch (Throwable e) { // 不自动隐藏smartbar同时又没有smartbar高度字段供访问，取系统navigationbar的高度
-                    return getNormalNavigationBarHeight(context) / metrics.density;
-                }
-            }
-        } else {
+        if (!isMeiZu || autoHideSmartBar) {
             return 0;
-            //return getNormalNavigationBarHeight(context) / metrics.density;
         }
+        try {
+            Class c = Class.forName("com.android.internal.R$dimen");
+            Object obj = c.newInstance();
+            Field field = c.getField("mz_action_button_min_height");
+            int height = Integer.parseInt(field.get(obj).toString());
+            return context.getResources().getDimensionPixelSize(height) / metrics.density;
+        } catch (Throwable e) { // 不自动隐藏smartbar同时又没有smartbar高度字段供访问，取系统navigationbar的高度
+            return getNormalNavigationBarHeight(context) / metrics.density;
+        }
+        //return getNormalNavigationBarHeight(context) / metrics.density;
     }
  
     protected static float getNormalNavigationBarHeight(final Context ctx) {
