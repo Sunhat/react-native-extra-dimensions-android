@@ -13,8 +13,7 @@ if (Platform.OS === 'android') {
         if(typeof result !== 'number') {
             return result;
         }
-        // If rounding down is ODD, round up. If rounding down is EVEN, round down.
-        return Math.floor(result) % 2 ? Math.ceil(result) : Math.floor(result);
+        return result;
       } catch (e) {
         console.error(e)
       }
