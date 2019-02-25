@@ -17,6 +17,24 @@ if (Platform.OS === 'android') {
       } catch (e) {
         console.error(e);
       }
+    },
+    getRealWidthHeight() {
+      return this.get('REAL_WINDOW_HEIGHT');
+    },
+    getRealWindowWidth() {
+      return this.get('REAL_WIDTH_WIDTH');
+    },
+    getStatusBarHeight() {
+      return this.get('STATUS_BAR_HEIGHT');
+    },
+    getSoftMenuBarHeight() {
+      return this.get('SOFT_MENU_BAR_HEIGHT');
+    },
+    getSmartBarHeight() {
+      return this.get('SMART_BAR_HEIGHT');
+    },
+    isSoftMenuBarEnabled() {
+      return this.get('SOFT_MENU_BAR_ENABLED');
     }
   };
 } else {
