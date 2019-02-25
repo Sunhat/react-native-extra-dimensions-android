@@ -81,8 +81,13 @@ Supported dimensions are:
 Alternatively, there are methods for each constant, to fulfill autocomplete in your IDE
 
 `ExtraDimensions.getRealWidthHeight()`
+
 `ExtraDimensions.getRealWindowWidth()`
+
 `ExtraDimensions.getStatusBarHeight()`
+
 `ExtraDimensions.getSoftMenuBarHeight()`
+
 `ExtraDimensions.getSmartBarHeight()`
+
 `ExtraDimensions.isSoftMenuBarEnabled()`
