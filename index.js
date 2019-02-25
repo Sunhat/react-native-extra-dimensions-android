@@ -6,7 +6,7 @@ if (Platform.OS === 'android') {
     get(dim) {
       try {
         if(!NativeModules.ExtraDimensions) {
-          throw "ExtraDimensions not defined. Try rebuilding your project. e.g. react-native run-android"
+          throw "ExtraDimensions not defined. Try rebuilding your project. e.g. react-native run-android";
         }
         const result = NativeModules.ExtraDimensions[dim];
 
@@ -15,7 +15,7 @@ if (Platform.OS === 'android') {
         }
         return result;
       } catch (e) {
-        console.error(e)
+        console.error(e);
       }
     }
   };
