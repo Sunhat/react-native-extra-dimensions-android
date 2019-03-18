@@ -7,6 +7,12 @@ declare type Dimensions =
 
 declare interface ExtraDimensions {
   get: (dim: Dimensions) => number;
+  getRealWindowHeight: () => number;
+  getRealWindowWidth: () => number;
+  getStatusBarHeight: () => number;
+  getSoftMenuBarHeight: () => number;
+  getSmartBarHeight: () => number;
+  isSoftMenuBarEnabled: () => number;
 }
 
 declare module "react-native-extra-dimensions-android" {
