@@ -85,9 +85,9 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule implements
     }
 
     private boolean hasPermanentMenuKey() {
-        resources = ctx.getResources();
-        int id = resources.getIdentifier("config_showNavigationBar", "bool", "android");
-        return id > 0 && resources.getBoolean(id);
+        final Context ctx = getReactApplicationContext();
+        int id = ctx.getResources().getIdentifier("config_showNavigationBar", "bool", "android");
+        return !(id > 0 && ctx.getResources().getBoolean(id));
     }
 
     private float getStatusBarHeight(DisplayMetrics metrics) {
