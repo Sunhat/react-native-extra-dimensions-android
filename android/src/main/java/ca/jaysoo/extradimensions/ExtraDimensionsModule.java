@@ -103,16 +103,12 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule implements
         if(hasPermanentMenuKey()) {
             return 0;
         }
-        final float realHeight = getRealHeight(metrics);
         final Context ctx = getReactApplicationContext();
-        final DisplayMetrics usableMetrics = ctx.getResources().getDisplayMetrics();
-
-        // Passing getMetrics will update the value of the Object DisplayMetrics metrics
-        ((WindowManager) mReactContext.getSystemService(Context.WINDOW_SERVICE))
-                .getDefaultDisplay().getMetrics(metrics);
-        final int usableHeight = usableMetrics.heightPixels;
-
-        return Math.max(0, realHeight - usableHeight / metrics.density);
+        final int heightResId = ctx.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
+        return
+          heightResId > 0
+            ? ctx.getResources().getDimensionPixelSize(heightResId) / metrics.density
+            : 0;
     }
 
     private float getRealHeight(DisplayMetrics metrics) {
