@@ -86,20 +86,8 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule implements
     }
 
     private boolean hasPermanentMenuKey() {
-        boolean hasPermanentMenuKey = true;
-        // From: https://www.jianshu.com/p/e164dec92bd8
-        try {
-            Class<?> windowManagerGlobalClass = Class.forName("android.view.WindowManagerGlobal");
-            Method getWmServiceMethod = windowManagerGlobalClass.getDeclaredMethod("getWindowManagerService");
-            getWmServiceMethod.setAccessible(true);
-            Object iWindowManager = getWmServiceMethod.invoke(null);
-            Class<?> iWindowManagerClass = iWindowManager.getClass();
-            Method hasNavBarMethod = iWindowManagerClass.getDeclaredMethod("hasNavigationBar");
-            hasNavBarMethod.setAccessible(true);
-            hasPermanentMenuKey = !(Boolean) hasNavBarMethod.invoke(iWindowManager);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        final Context ctx = getReactApplicationContext();
+        boolean hasPermanentMenuKey = ViewConfiguration.get(ctx).hasPermanentMenuKey();
         return hasPermanentMenuKey;
     }
 
