@@ -86,8 +86,15 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule implements
 
     private boolean hasPermanentMenuKey() {
         final Context ctx = getReactApplicationContext();
-        int id = ctx.getResources().getIdentifier("config_showNavigationBar", "bool", "android");
-        return !(id > 0 && ctx.getResources().getBoolean(id));
+
+        if(isEmulator()) {
+          boolean hasPermanentMenuKey = ViewConfiguration.get(ctx).hasPermanentMenuKey();
+          return hasPermanentMenuKey;
+        } else {
+          int id = ctx.getResources().getIdentifier("config_showNavigationBar", "bool", "android");
+
+          return !(id > 0 && ctx.getResources().getBoolean(id));
+        }
     }
 
     private float getStatusBarHeight(DisplayMetrics metrics) {
@@ -159,5 +166,16 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule implements
             return 0;
         }
         return 0;
+    }
+    
+    public static boolean isEmulator() {
+        return Build.FINGERPRINT.startsWith("generic")
+                || Build.FINGERPRINT.startsWith("unknown")
+                || Build.MODEL.contains("google_sdk")
+                || Build.MODEL.contains("Emulator")
+                || Build.MODEL.contains("Android SDK built for x86")
+                || Build.MANUFACTURER.contains("Genymotion")
+                || (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
+                || "google_sdk".equals(Build.PRODUCT);
     }
 }
