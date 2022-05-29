@@ -1,6 +1,6 @@
 
 ### Notice
-Pull requests always welcome!
+This project is dead. As a React Native developer, I do not use this package. It is not needed.
 
 ## ExtraDimensions
 
