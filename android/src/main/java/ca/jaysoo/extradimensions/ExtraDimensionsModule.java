@@ -17,6 +17,7 @@ import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -85,10 +86,23 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule implements
     }
 
     private boolean hasPermanentMenuKey() {
-        final Context ctx = getReactApplicationContext();
-        int id = ctx.getResources().getIdentifier("config_showNavigationBar", "bool", "android");
-        return !(id > 0 && ctx.getResources().getBoolean(id));
+        boolean hasPermanentMenuKey = true;
+        // From: https://www.jianshu.com/p/e164dec92bd8
+        try {
+            Class<?> windowManagerGlobalClass = Class.forName("android.view.WindowManagerGlobal");
+            Method getWmServiceMethod = windowManagerGlobalClass.getDeclaredMethod("getWindowManagerService");
+            getWmServiceMethod.setAccessible(true);
+            Object iWindowManager = getWmServiceMethod.invoke(null);
+            Class<?> iWindowManagerClass = iWindowManager.getClass();
+            Method hasNavBarMethod = iWindowManagerClass.getDeclaredMethod("hasNavigationBar");
+            hasNavBarMethod.setAccessible(true);
+            hasPermanentMenuKey = !(Boolean) hasNavBarMethod.invoke(iWindowManager);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return hasPermanentMenuKey;
     }
+
 
     private float getStatusBarHeight(DisplayMetrics metrics) {
         final Context ctx = getReactApplicationContext();
@@ -100,9 +114,6 @@ public class ExtraDimensionsModule extends ReactContextBaseJavaModule implements
     }
 
     private float getSoftMenuBarHeight(DisplayMetrics metrics) {
-        if(hasPermanentMenuKey()) {
-            return 0;
-        }
         final Context ctx = getReactApplicationContext();
         final int heightResId = ctx.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
         return
